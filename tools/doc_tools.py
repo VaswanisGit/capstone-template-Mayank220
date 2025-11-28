@@ -1,3 +1,2 @@
 # Document Tools
-class DocTools:
-    pass
+# TODO: Implement generate_pdf

@@ -1,4 +1,2 @@
 # Template Store
-class TemplateStore:
-    def get_template(self, name):
-        pass
+# TODO: Implement load_snippets

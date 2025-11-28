@@ -1,1 +1,7 @@
 Validation Brief Template
+# Problem
+# Market
+# Competitors
+# Metrics
+# Risks
+# Next Steps

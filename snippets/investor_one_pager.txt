@@ -1,1 +1,6 @@
-Investor One Pager
+Investor One Pager Template
+[Title]
+[Value Prop]
+[Market]
+[Traction]
+[Ask]

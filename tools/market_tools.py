@@ -1,3 +1,2 @@
 # Market Tools
-class MarketTools:
-    pass
+# TODO: Implement search_market stub
