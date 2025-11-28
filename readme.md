@@ -36,32 +36,6 @@ Build a minimal CLI using argparse or input() that:
 
 loads state
 
-routes request
-
-runs appropriate subgraph
-
-prints the task + short preview.
-
-[DONE] Step 4: Implement the Research subgraph (RAG placeholder)
-
-Implement ResearchSupervisor.run(state) inside graph/research.py.
-
-Add deterministic stubs for retrieval:
-
-tools.market_tools.search_market()
-
-tools.template_store.load_snippets()
-
-Save retrieved evidence to state.retrieved_evidence with provenance fields.
-
-Add TODO markers where real embedding-based Chroma RAG would go.
-
-[TODO] Step 5: Implement the Synthesis subgraph
-
-Add SynthesisSupervisor.run(state) inside graph/synth.py.
-
-Load templates from /snippets such as:
-
 validation_brief_template.txt
 
 investor_one_pager.txt
