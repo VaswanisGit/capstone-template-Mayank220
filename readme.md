@@ -92,28 +92,6 @@ Presence of market size estimates
 
 At least one competitor identified
 
-Evidence retrieved > 0
-
-Internal logical consistency
-
-Save to state.validation_report a dict with: {score, flags, provenance_summary}.
-
-[TODO] Step 7: Populate snippet templates
-
-Add sample text templates in /snippets:
-
-investor_one_pager.txt (value prop, traction, ask, summary)
-
-validation_brief_template.txt (Problem, Market, Competitors, Metrics, Risks)
-
-Ensure each snippet includes a simple “provenance” field.
-
-[TODO] Step 8: Build simple stubs for tools
-
-Inside /tools:
-
-template_store.py
-
 Load snippet files into Python dicts.
 
 Return snippet text + provenance.
