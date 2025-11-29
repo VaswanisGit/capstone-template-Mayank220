@@ -26,42 +26,6 @@ Implement Orchestrator functions:
 
 run_research(state)
 
-run_synth(state)
-
-run_validator(state)
-
-Add checkpoint saving after every run.
-
-Build a minimal CLI using argparse or input() that:
-
-loads state
-
-validation_brief_template.txt
-
-investor_one_pager.txt
-
-Build a LangChain prompt chain placeholder that assembles:
-
-Problem
-
-Solution
-
-Market Summary
-
-Evidence highlights
-
-Basic metrics (TAM/SAM/SOM placeholder)
-
-Risks + Next steps
-
-Save output to state.draft_snapshot.
-
-[TODO] Step 6: Implement the Validator subgraph
-
-Implement deterministic heuristic checks inside graph/validator.py.
-
-Score factors include:
-
 Presence of market size estimates
 
 At least one competitor identified
