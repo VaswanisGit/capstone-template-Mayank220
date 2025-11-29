@@ -26,6 +26,68 @@ Implement Orchestrator functions:
 
 run_research(state)
 
+run_synth(state)
+
+run_validator(state)
+
+Add checkpoint saving after every run.
+
+Build a minimal CLI using argparse or input() that:
+
+loads state
+
+routes request
+
+runs appropriate subgraph
+
+prints the task + short preview.
+
+[DONE] Step 4: Implement the Research subgraph (RAG placeholder)
+
+Implement ResearchSupervisor.run(state) inside graph/research.py.
+
+Add deterministic stubs for retrieval:
+
+tools.market_tools.search_market()
+
+tools.template_store.load_snippets()
+
+Save retrieved evidence to state.retrieved_evidence with provenance fields.
+
+Add TODO markers where real embedding-based Chroma RAG would go.
+
+[DONE] Step 5: Implement the Synthesis subgraph
+
+Add SynthesisSupervisor.run(state) inside graph/synth.py.
+
+Load templates from /snippets such as:
+
+validation_brief_template.txt
+
+investor_one_pager.txt
+
+Build a LangChain prompt chain placeholder that assembles:
+
+Problem
+
+Solution
+
+Market Summary
+
+Evidence highlights
+
+Basic metrics (TAM/SAM/SOM placeholder)
+
+Risks + Next steps
+
+Save output to state.draft_snapshot.
+
+[DONE] Step 6: Implement the Validator subgraph
+
+Implement deterministic heuristic checks inside graph/validator.py.
+
+Score factors include:
+
 Presence of market size estimates
 
 At least one competitor identified

@@ -1,6 +1,22 @@
-Investor One Pager Template
-[Title]
-[Value Prop]
-[Market]
-[Traction]
-[Ask]
+# INVESTOR ONE-PAGER: [Startup Name]
+
+## 1. Value Proposition
+[One sentence that explains what you do and for whom.]
+
+## 2. The Problem
+[What pain point are you solving? How big is it?]
+
+## 3. The Solution
+[Your product/service. How does it solve the problem?]
+
+## 4. Market Opportunity
+[TAM/SAM/SOM. Why is now the right time?]
+
+## 5. Traction / Validation
+[Evidence found so far. User interest, competitors, etc.]
+
+## 6. The Ask
+[What do you need? Capital, partners, advice?]
+
+## 7. Team
+[Who are you?]

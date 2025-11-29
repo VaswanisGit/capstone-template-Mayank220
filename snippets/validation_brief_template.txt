@@ -1,7 +1,19 @@
-Validation Brief Template
-# Problem
-# Market
-# Competitors
-# Metrics
-# Risks
-# Next Steps
+# VALIDATION BRIEF
+
+## 1. Problem Statement
+[Describe the core problem validation.]
+
+## 2. Market Analysis
+[Summary of market size, trends, and growth.]
+
+## 3. Competitive Landscape
+[Key competitors and your differentiation.]
+
+## 4. Key Metrics
+[Estimated TAM, potential pricing, unit economics.]
+
+## 5. Risks & Challenges
+[Regulatory, technical, or adoption risks.]
+
+## 6. Next Steps
+[Recommended actions to validate further.]
