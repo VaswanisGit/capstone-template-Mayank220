@@ -84,36 +84,6 @@ Save output to state.draft_snapshot.
 
 [DONE] Step 6: Implement the Validator subgraph
 
-Implement deterministic heuristic checks inside graph/validator.py.
-
-Score factors include:
-
-Presence of market size estimates
-
-At least one competitor identified
-
-Load snippet files into Python dicts.
-
-Return snippet text + provenance.
-
-market_tools.py
-
-Return deterministic placeholder “market evidence” objects.
-
-Add TODO where real RAG or web API would eventually plug in.
-
-doc_tools.py
-
-Implement a minimal PDF or TXT export tool.
-
-Only export after human confirmation.
-
-[TODO] Step 9: Design final report + CLI export flow
-
-Define clear final sections in the business validation report.
-
-Ensure draft_snapshot follows a clean consulting structure.
-
 Add a CLI prompt asking:
 “Do you want to export this report? (y/n)”
 

@@ -80,6 +80,14 @@ def main():
     print("-" * 20)
     print("Disclaimer: This tool provides research-assistance and heuristics only; not legal, tax, or investment advice.")
     print("Human must approve before any final export (PDF/docx) is written.")
+    
+    # Export Prompt
+    if state.draft_snapshot and state.validation_report.get("score", 0) > 0:
+        export_choice = input("\nDo you want to export this report? (y/n): ").lower().strip()
+        if export_choice == 'y':
+            from tools.doc_tools import DocTools
+            filename = f"validation_report_{state.input_idea.replace(' ', '_')}.txt"
+            DocTools.generate_report(state.draft_snapshot, filename)
 
 if __name__ == "__main__":
     main()
