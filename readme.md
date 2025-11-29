@@ -76,25 +76,6 @@ Market Summary
 
 Evidence highlights
 
-Basic metrics (TAM/SAM/SOM placeholder)
-
-Risks + Next steps
-
-Save output to state.draft_snapshot.
-
-[DONE] Step 6: Implement the Validator subgraph
-
-Add a CLI prompt asking:
-“Do you want to export this report? (y/n)”
-
-On “yes”, call doc_tools.generate_pdf() or write a .txt.
-
-[TODO] Step 10: Create sample startup ideas and test full system
-
-Prepare sample ideas:
-
-AI fashion stylist
-
 EdTech micro-tutoring app
 
 Creator economy analytics tool
