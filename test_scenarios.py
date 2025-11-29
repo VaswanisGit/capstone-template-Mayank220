@@ -1,4 +1,5 @@
 import os
+import shutil
 from graph.state import ValidationState
 from graph.research import ResearchSupervisor
 from graph.synth import SynthesisSupervisor
@@ -32,6 +33,11 @@ def run_scenario(idea: str):
         print("Error: No draft snapshot generated.")
 
 def main():
+    # Clean up previous evidence
+    if os.path.exists("docs/test_evidence"):
+        shutil.rmtree("docs/test_evidence")
+    os.makedirs("docs/test_evidence")
+
     ideas = [
         "AI fashion stylist",
         "EdTech micro-tutoring app",

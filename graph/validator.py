@@ -14,7 +14,9 @@ class Validator:
         evidence_count = len(state.retrieved_evidence)
         if evidence_count > 0:
             score += 10
-            provenance_summary.append(f"Found {evidence_count} evidence items")
+            if evidence_count >= 3:
+                score += 10 # Bonus for sufficient evidence
+            provenance_summary.append(f"Found {evidence_count} evidence items (Base +10, Bonus +10 if >3)")
         else:
             flags.append("No evidence found")
             
@@ -24,20 +26,20 @@ class Validator:
         
         if has_market:
             score += 20
-            provenance_summary.append("Market data present")
+            provenance_summary.append("Market data present (+20)")
         else:
             flags.append("Missing market data")
             
         if has_competitor:
             score += 20
-            provenance_summary.append("Competitor data present")
+            provenance_summary.append("Competitor data present (+20)")
         else:
             flags.append("Missing competitor data")
             
         # 3. Check for draft snapshot
         if state.draft_snapshot and len(state.draft_snapshot) > 100:
-            score += 50
-            provenance_summary.append("Draft snapshot generated")
+            score += 40
+            provenance_summary.append("Draft snapshot generated (+40)")
         else:
             flags.append("Draft snapshot missing or too short")
             
@@ -50,5 +52,5 @@ class Validator:
             "provenance_summary": provenance_summary
         }
         
-        print(f"    [Validator] Score: {score}, Flags: {len(flags)}")
+        print(f"    [Validator] Score: {score}/100, Flags: {len(flags)}")
         return state

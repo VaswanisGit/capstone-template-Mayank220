@@ -60,40 +60,6 @@ Add TODO markers where real embedding-based Chroma RAG would go.
 
 Add SynthesisSupervisor.run(state) inside graph/synth.py.
 
-Load templates from /snippets such as:
-
-validation_brief_template.txt
-
-investor_one_pager.txt
-
-Build a LangChain prompt chain placeholder that assembles:
-
-Problem
-
-Solution
-
-Market Summary
-
-Evidence highlights
-
-EdTech micro-tutoring app
-
-Creator economy analytics tool
-
-Local commerce marketplace
-
-Run test flows for:
-
-Discover → Validate → Synth
-
-Collect example outputs and place them inside /docs/ as test evidence.
-
-[TODO] Step 11: Improve prompt engineering + refine outputs
-
-Tuned prompts for structured reasoning.
-
-Improve clarity of validation_report scoring system.
-
 Improve consistency of provenance entries.
 
 Document known limitations.
