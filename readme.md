@@ -1,104 +1,106 @@
-# Startup Idea Validator (Capstone Project)
+# Startup Idea Validator - Capstone Project
 
-A CLI-based agentic tool that validates startup ideas using simulated market research and "brutally honest" validation logic. It leverages LangGraph for orchestration and can optionally use OpenAI's GPT-4 for deep analysis.
+This project is a command-line interface (CLI) tool designed to validate startup concepts through simulated market research and automated analysis. It utilizes a graph-based orchestration framework (LangGraph) to manage the validation workflow, which includes research, validation, and report synthesis.
 
-## ✅ Completed Features (Progress Log)
+## Project Progress and Implemented Features
 
--   **Architecture Compliance**: Verified structure, state, and subgraphs against `docs/ARCHITECTURE.md`.
--   **Automated Testing**: Ran and passed all unit tests (`test_state.py`, `test_research.py`, etc.).
--   **Functional CLI**: Implemented and tested `discover`, `validate`, and `synth` workflows.
--   **Interactive Flow**: Added a guided session mode with step-by-step confirmation.
--   **Session Management**: Implemented persistence and "continue vs. reset" logic.
--   **Real Synthesis**: Integrated OpenAI (GPT-4) for generating detailed reports.
--   **Smart Fallback**: Created a robust fallback system using sector-specific simulated data (AI, Pets, Food) when no API key is present.
--   **Quality Improvements**:
-    -   Enhanced `MarketTools` to return realistic, sector-specific data.
-    -   Improved `Validator` to flag common tropes ("Uber for X") and vague ideas.
-    -   Refined `Synthesis` to produce educational, dynamic reports even in fallback mode.
--   **Report Refinement**: Implemented a "brutal and realistic" VC-style report format with specific sections (Executive Summary, 5 Reasons It Could Work/Fail, etc.).
--   **Documentation**: Updated README with usage instructions and feature details.
+The following features have been implemented and verified as part of the capstone requirements:
 
-## 🚀 Features
+*   **Architecture Compliance**: The project structure, state management, and subgraph components have been verified against the `docs/ARCHITECTURE.md` specification.
+*   **Automated Testing**: Unit tests for state management, research logic, and main execution flow have been implemented and passed.
+*   **Functional CLI**: The tool supports three distinct operational modes: `discover`, `validate`, and `synth`.
+*   **Interactive Session**: A guided user interface was developed to lead the user through the validation process step-by-step.
+*   **Session Persistence**: The system saves the validation state to a local JSON file, allowing users to pause and resume their sessions.
+*   **Real Synthesis Integration**: The application is integrated with OpenAI's GPT-4 to generate detailed investment memos (requires an API key).
+*   **Fallback Mechanism**: A robust fallback system was implemented to generate useful reports using sector-specific simulated data (e.g., for AI, Pet Care, Food Tech) when no API key is provided.
+*   **Quality Enhancements**:
+    *   The market research module returns sector-specific data rather than generic placeholders.
+    *   The validation logic includes heuristics to flag common derivative ideas (e.g., "Uber for X") and vague descriptions.
+    *   The reporting module produces educational and dynamic outputs even in fallback mode.
+*   **Report Formatting**: The final output follows a structured Venture Capital style format, including an Executive Summary, Market Analysis, Competitive Landscape, and a "Brutal Reality Check" section.
 
--   **Interactive Session**: Guides you step-by-step through Research, Validation, and Synthesis.
--   **Brutal Validation**: Provides a realistic, VC-style critique of your idea, flagging common tropes and risks.
--   **Smart Fallback**: Works even without an API key by using sector-specific simulated data (AI, Pets, Food, etc.) and dynamic templates.
--   **Deep Analysis (Optional)**: Connects to OpenAI (GPT-4) for a comprehensive investment memo if an API key is provided.
--   **Session Persistence**: Saves your progress so you can resume later.
+## System Features
 
-## 🛠️ Setup
+*   **Interactive Mode**: Guides the user through the entire pipeline: Research -> Validation -> Synthesis.
+*   **Validation Logic**: Applies critical analysis to the startup idea, identifying potential risks and market saturation.
+*   **Smart Fallback**: Ensures the tool remains functional for demonstration purposes without external dependencies.
+*   **Deep Analysis**: Optional integration with Large Language Models for comprehensive report generation.
+*   **State Management**: Persists data locally to `data/state.json`.
 
-1.  **Clone the repository**:
+## Setup Instructions
+
+1.  **Clone the Repository**:
     ```bash
     git clone <repository-url>
     cd capstone-template-mayank220
     ```
 
-2.  **Install dependencies**:
+2.  **Install Dependencies**:
     ```bash
     pip install -r requirements.txt
     ```
 
-3.  **Configure Environment (Optional)**:
-    -   Create a `.env` file in the root directory.
-    -   Add your OpenAI API key for real AI generation:
-        ```env
-        OPENAI_API_KEY=sk-your-key-here
-        ```
-    -   *Note: The tool works fully without a key, using smart simulated data.*
+3.  **Environment Configuration (Optional)**:
+    To enable real-time AI generation, create a `.env` file in the root directory and add your OpenAI API key:
+    ```env
+    OPENAI_API_KEY=your-key-here
+    ```
+    *Note: The application functions fully without this key using the simulated data module.*
 
-## 🏃 Usage
+## Usage Guide
 
-### Interactive Mode (Recommended)
-Simply run the main script to start a guided session:
+### Interactive Mode
+To start a guided session, run the main module without arguments:
 ```bash
 python -m graph.main
 ```
-Follow the prompts to enter your idea, review research, and generate a report.
 
 ### Batch Mode
-Run specific tasks directly via command line arguments:
+The tool can also be operated via command-line arguments for specific tasks:
 
--   **Discover (Research + Validate)**:
+*   **Discover Phase** (Runs Research and Validation):
     ```bash
     python -m graph.main --idea "Uber for dog walking" --task discover
     ```
 
--   **Validate (Re-run validation logic)**:
+*   **Validation Phase** (Re-runs validation logic on existing state):
     ```bash
     python -m graph.main --task validate
     ```
 
--   **Synth (Generate Report)**:
+*   **Synthesis Phase** (Generates the final report):
     ```bash
     python -m graph.main --task synth
     ```
 
--   **Reset Session**:
+*   **Reset Session**:
     ```bash
     python -m graph.main --reset
     ```
 
-## 📊 Output Format
+## Output Structure
 
-The tool generates a detailed **Validation Report** including:
--   **Executive Summary**: Viability assessment.
--   **Market Analysis**: Trends, competitors, and reality checks.
--   **Risks & Challenges**: Brutal assessment of potential failure points.
--   **Investor Snapshot**: A one-page summary for pitching.
--   **5 Reasons It Could Work / 5 Reasons It May Not Work**: Balanced, realistic critique.
+The generated Validation Report includes the following sections:
 
-## 🏗️ Architecture
+1.  **Executive Summary**: A high-level assessment of the idea's viability.
+2.  **Market Analysis**: Data regarding market size, trends, and growth potential.
+3.  **Risks & Challenges**: A critical evaluation of potential failure points.
+4.  **Investor Snapshot**: A one-page summary suitable for pitch decks.
+5.  **Critical Analysis**: Five reasons the idea could succeed and five reasons it might fail.
 
--   **`graph/main.py`**: Entry point and interactive session manager.
--   **`graph/state.py`**: Manages global state and persistence (JSON).
--   **`graph/research.py`**: Simulates market research using `tools/market_tools.py`.
--   **`graph/validator.py`**: Scores ideas based on evidence and heuristics.
--   **`graph/synth.py`**: Generates the final report (LLM or Smart Template).
+## System Architecture
 
-## 🧪 Testing
+The codebase is organized as follows:
 
-Run the test suite to verify functionality:
+*   `graph/main.py`: Entry point and session manager.
+*   `graph/state.py`: Defines the global state schema and handles JSON persistence.
+*   `graph/research.py`: Implements the research subgraph using `tools/market_tools.py`.
+*   `graph/validator.py`: Contains the scoring logic and heuristic checks.
+*   `graph/synth.py`: Handles the generation of the final report.
+
+## Testing
+
+To execute the unit test suite, run:
 ```bash
 python -m unittest discover tests
 ```
