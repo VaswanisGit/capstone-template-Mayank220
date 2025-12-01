@@ -1,65 +1,101 @@
-I plan to execute the following steps to complete my project.
+# Startup Idea Validator
 
-[DONE] Step 1: Set up project structure and environment
+A CLI tool that helps founders validate a startup idea by collecting quick market evidence, estimating simple metrics, and producing a validation report.
 
-Create a virtual environment and install dependencies from requirements.txt (langgraph, langchain, chromadb, etc.).
+## Setup
 
-Fork the MAT496 capstone repository and create the folder capstone-template-mayank220/.
+1.  **Install Dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Add the exact folder structure defined in ARCHITECTURE.md (graph/, tools/, snippets/, data/, docs/, etc.).
+2.  **Environment Variables**:
+    Create a `.env` file if needed (currently not strictly required for the stubbed version).
+# Startup Idea Validator (Capstone Project)
 
-Create empty starter files for all required modules (state.py, main.py, research.py, synth.py, validator.py).
+A CLI-based agentic tool that validates startup ideas using simulated market research and "brutally honest" validation logic. It leverages LangGraph for orchestration and can optionally use OpenAI's GPT-4 for deep analysis.
 
-[DONE] Step 2: Implement global state with Pydantic
+## 🚀 Features
 
-Define the ValidationState model exactly as specified (messages, input_idea, retrieved_evidence, metrics, draft_snapshot, versions, etc.) in graph/state.py.
+-   **Interactive Session**: Guides you step-by-step through Research, Validation, and Synthesis.
+-   **Brutal Validation**: Provides a realistic, VC-style critique of your idea, flagging common tropes and risks.
+-   **Smart Fallback**: Works even without an API key by using sector-specific simulated data (AI, Pets, Food, etc.) and dynamic templates.
+-   **Deep Analysis (Optional)**: Connects to OpenAI (GPT-4) for a comprehensive investment memo if an API key is provided.
+-   **Session Persistence**: Saves your progress so you can resume later.
 
-Ensure it supports incremental updates across runs (mutable state, lists, dicts).
+## 🛠️ Setup
 
-Add a checksum/serialization helper to save and load from ./data/state.json.
+1.  **Clone the repository**:
+    ```bash
+    git clone <repository-url>
+    cd capstone-template-mayank220
+    ```
 
-[DONE] Step 3: Build the Router + Orchestrator
+2.  **Install dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Implement a deterministic keyword-based Router that classifies tasks into "discover", "validate", or "synth".
+3.  **Configure Environment (Optional)**:
+    -   Create a `.env` file in the root directory.
+    -   Add your OpenAI API key for real AI generation:
+        ```env
+        OPENAI_API_KEY=sk-your-key-here
+        ```
+    -   *Note: The tool works fully without a key, using smart simulated data.*
 
-Implement Orchestrator functions:
+## 🏃 Usage
 
-run_research(state)
+### Interactive Mode (Recommended)
+Simply run the main script to start a guided session:
+```bash
+python -m graph.main
+```
+Follow the prompts to enter your idea, review research, and generate a report.
 
-run_synth(state)
+### Batch Mode
+Run specific tasks directly via command line arguments:
 
-run_validator(state)
+-   **Discover (Research + Validate)**:
+    ```bash
+    python -m graph.main --idea "Uber for dog walking" --task discover
+    ```
 
-Add checkpoint saving after every run.
+-   **Validate (Re-run validation logic)**:
+    ```bash
+    python -m graph.main --task validate
+    ```
 
-Build a minimal CLI using argparse or input() that:
+-   **Synth (Generate Report)**:
+    ```bash
+    python -m graph.main --task synth
+    ```
 
-loads state
+-   **Reset Session**:
+    ```bash
+    python -m graph.main --reset
+    ```
 
-routes request
+## 📊 Output Format
 
-runs appropriate subgraph
+The tool generates a detailed **Validation Report** including:
+-   **Executive Summary**: Viability assessment.
+-   **Market Analysis**: Trends, competitors, and reality checks.
+-   **Risks & Challenges**: Brutal assessment of potential failure points.
+-   **Investor Snapshot**: A one-page summary for pitching.
+-   **5 Reasons It Could Work / 5 Reasons It May Not Work**: Balanced, realistic critique.
 
-prints the task + short preview.
+## 🏗️ Architecture
 
-[DONE] Step 4: Implement the Research subgraph (RAG placeholder)
+-   **`graph/main.py`**: Entry point and interactive session manager.
+-   **`graph/state.py`**: Manages global state and persistence (JSON).
+-   **`graph/research.py`**: Simulates market research using `tools/market_tools.py`.
+-   **`graph/validator.py`**: Scores ideas based on evidence and heuristics.
+-   **`graph/synth.py`**: Generates the final report (LLM or Smart Template).
 
-Implement ResearchSupervisor.run(state) inside graph/research.py.
+## 🧪 Testing
 
-Add deterministic stubs for retrieval:
-
-tools.market_tools.search_market()
-
-tools.template_store.load_snippets()
-
-Save retrieved evidence to state.retrieved_evidence with provenance fields.
-
-Add TODO markers where real embedding-based Chroma RAG would go.
-
-[DONE] Step 5: Implement the Synthesis subgraph
-
-Add SynthesisSupervisor.run(state) inside graph/synth.py.
-
-Improve consistency of provenance entries.
-
-Document known limitations.
+Run the test suite to verify functionality:
+```bash
+python -m unittest discover tests
+```

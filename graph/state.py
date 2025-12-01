@@ -18,7 +18,7 @@ class ValidationState(BaseModel):
 def save_checkpoint(state: ValidationState, filepath: str = "data/state.json"):
     """Saves the state to a JSON file."""
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
-    with open(filepath, "w") as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         # Pydantic v2
         if hasattr(state, "model_dump_json"):
             f.write(state.model_dump_json(indent=2))
@@ -29,7 +29,7 @@ def save_checkpoint(state: ValidationState, filepath: str = "data/state.json"):
 def load_checkpoint(filepath: str = "data/state.json") -> ValidationState:
     """Loads the state from a JSON file. Returns a new state if file doesn't exist."""
     if os.path.exists(filepath):
-        with open(filepath, "r") as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             data = json.load(f)
         return ValidationState(**data)
     return ValidationState()

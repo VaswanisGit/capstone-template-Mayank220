@@ -38,13 +38,24 @@ class Validator:
             
         # 3. Check for draft snapshot
         if state.draft_snapshot and len(state.draft_snapshot) > 100:
-            score += 40
-            provenance_summary.append("Draft snapshot generated (+40)")
+            score += 20
+            provenance_summary.append("Draft snapshot generated (+20)")
         else:
             flags.append("Draft snapshot missing or too short")
             
-        # Cap score at 100
-        score = min(100, score)
+        # 4. Idea Quality Check (Simple Heuristics)
+        idea = (state.input_idea or "").lower()
+        if len(idea) < 10:
+            flags.append("Idea description is too short/vague")
+            score -= 10
+        
+        # Reality Check for "X for Y" tropes
+        if "tinder for" in idea or "uber for" in idea:
+            flags.append("Idea uses a common derivative trope ('X for Y'). Ensure distinct value prop.")
+            score -= 10
+            
+        # Cap score at 100 and floor at 0
+        score = max(0, min(100, score))
         
         state.validation_report = {
             "score": score,
