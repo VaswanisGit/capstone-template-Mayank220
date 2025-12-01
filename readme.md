@@ -1,19 +1,22 @@
-# Startup Idea Validator
-
-A CLI tool that helps founders validate a startup idea by collecting quick market evidence, estimating simple metrics, and producing a validation report.
-
-## Setup
-
-1.  **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-2.  **Environment Variables**:
-    Create a `.env` file if needed (currently not strictly required for the stubbed version).
 # Startup Idea Validator (Capstone Project)
 
 A CLI-based agentic tool that validates startup ideas using simulated market research and "brutally honest" validation logic. It leverages LangGraph for orchestration and can optionally use OpenAI's GPT-4 for deep analysis.
+
+## ✅ Completed Features (Progress Log)
+
+-   **Architecture Compliance**: Verified structure, state, and subgraphs against `docs/ARCHITECTURE.md`.
+-   **Automated Testing**: Ran and passed all unit tests (`test_state.py`, `test_research.py`, etc.).
+-   **Functional CLI**: Implemented and tested `discover`, `validate`, and `synth` workflows.
+-   **Interactive Flow**: Added a guided session mode with step-by-step confirmation.
+-   **Session Management**: Implemented persistence and "continue vs. reset" logic.
+-   **Real Synthesis**: Integrated OpenAI (GPT-4) for generating detailed reports.
+-   **Smart Fallback**: Created a robust fallback system using sector-specific simulated data (AI, Pets, Food) when no API key is present.
+-   **Quality Improvements**:
+    -   Enhanced `MarketTools` to return realistic, sector-specific data.
+    -   Improved `Validator` to flag common tropes ("Uber for X") and vague ideas.
+    -   Refined `Synthesis` to produce educational, dynamic reports even in fallback mode.
+-   **Report Refinement**: Implemented a "brutal and realistic" VC-style report format with specific sections (Executive Summary, 5 Reasons It Could Work/Fail, etc.).
+-   **Documentation**: Updated README with usage instructions and feature details.
 
 ## 🚀 Features
 
